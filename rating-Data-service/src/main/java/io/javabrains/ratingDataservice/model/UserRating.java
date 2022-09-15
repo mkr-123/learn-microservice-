@@ -1,0 +1,17 @@
+package io.javabrains.ratingDataservice.model;
+
+import java.util.List;
+
+public class UserRating {
+	
+	private List<Rating> userRatingList;
+
+	public List<Rating> getUserRatingList() {
+		return userRatingList;
+	}
+
+	public void setUserRatingList(List<Rating> userRatingList) {
+		this.userRatingList = userRatingList;
+	}
+
+}
