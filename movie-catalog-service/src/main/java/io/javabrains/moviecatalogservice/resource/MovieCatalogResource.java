@@ -28,11 +28,11 @@ public class MovieCatalogResource {
 		//get all rated movieId
 		
 		
-		UserRating  ratings=restTemplate.getForObject("http://localhost:8083/ratingsdata/users/"+userId, UserRating.class	);
+		UserRating  ratings=restTemplate.getForObject("http://rating-data-service/ratingsdata/users/"+userId, UserRating.class	);
 		
 		return ratings.getUserRatingList(). stream().map(rating ->{ 
 			//For each movieId ,call movie info service and get details
-		Moive moive=  restTemplate.getForObject("http://localhost:8082/movies/"+rating.getMovieId(),Moive.class);
+		Moive moive=  restTemplate.getForObject("http://movie-info-service/movies/"+rating.getMovieId(),Moive.class);
 		//put them all together
 		return new CatalogItem(moive.getName(),"desc",rating.getRating());
 		}).collect(Collectors.toList());
